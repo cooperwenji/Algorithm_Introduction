@@ -25,6 +25,16 @@ class AVLTree {
 	  AVLTree();
 	  ~AVLTree();
 
+	  int height();            //get the height of tree  (for the outside use)  
+	  int max(int a, int b);   //get the max number between two int
+
+  private:
+	  int height(AVLTreeNode<T> *tree);  //get the height of tree (for the inside use)
+
+	  AVLTreeNode<T>* leftLeftRotation(AVLTreeNode<T>* k2);   //corresponding to the situation of LL
+	  AVLTreeNode<T>* leftRightRotation(AVLTreeNode<T>* k2);  //corresponding to the situation of LR
+	  AVLTreeNode<T>* rightRightRotation(AVLTreeNode<T>* k2); //corresponding to the situation of RR
+	  AVLTreeNode<T>* rightLeftRotation(AVLTreeNode<T>* k2);  //corresponding to the situation of RL
 };
 
 
