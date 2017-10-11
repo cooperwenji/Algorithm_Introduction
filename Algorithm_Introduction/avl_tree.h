@@ -35,6 +35,10 @@ class AVLTree {
 	  AVLTreeNode<T>* leftRightRotation(AVLTreeNode<T>* k2);  //corresponding to the situation of LR
 	  AVLTreeNode<T>* rightRightRotation(AVLTreeNode<T>* k2); //corresponding to the situation of RR
 	  AVLTreeNode<T>* rightLeftRotation(AVLTreeNode<T>* k2);  //corresponding to the situation of RL
+
+	  //将节点z插入到AVL树中
+	  AVLTreeNode<T>* insert(AVLTreeNode<T>* &tree, Tkey);  
+
 };
 
 
