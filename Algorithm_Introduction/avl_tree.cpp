@@ -63,5 +63,36 @@ AVLTreeNode<T>* AVLTree<T>::rightLeftRotation(AVLTreeNode<T> *k1)
 	return rightRightRotation(k1);
 }
 
+template<typename T>
+AVLTreeNode<T>* AVLTree<T>::insert(AVLTreeNode<T>* &tree, T key)
+{
+	if (tree == NULL)
+	{
+		//新建节点
+		tree = new AVLTreeNode<T>(key, NULL, NULL);
+		if (tree == NULL)
+		{
+			std::cout << "ERROR: create avltree node failed!" << std::endl;
+			return NULL;
+		}
+	}else if(key < tree->key)  //应该将key插入到tree的左子树的情况
+	{
+		tree->left = insert(tree->left, key);
+		//插入节点后，若AVL树失去平衡，则进行相应的调节
+		if (height(tree->left) - height(tree->right) == 2)
+		{
+			if (key < tree->left->key)
+				tree = leftLeftRotation(tree);
+			else
+				tree = leftRightRotation(tree);
+		}
+	}
+	else if (key > tree->key)
+	{
+
+	}
+
+}
+
 
 

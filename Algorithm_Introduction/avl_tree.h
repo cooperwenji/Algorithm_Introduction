@@ -1,6 +1,8 @@
 #ifndef AVL_TREE_H
 #define AVL_TREE_H
 
+#include<iostream>
+
 //AVLÊ÷½áµã
 template <typename T>
 class AVLTreeNode {
