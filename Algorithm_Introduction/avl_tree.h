@@ -18,6 +18,10 @@ class AVLTreeNode {
 
 
 //AVL树---高度自平衡二叉搜索树
+/*  查询、插入、删除操作的时间代价都是O(logn);
+ *  缺点在于：为了维持搜索树的平衡，每次的插入或删除操作都需要
+ *            频繁的旋转树节点
+*/
 template <typename T>
 class AVLTree {
   private:
@@ -30,6 +34,9 @@ class AVLTree {
 	  int height();            //get the height of tree  (for the outside use)  
 	  int max(int a, int b);   //get the max number between two int
 
+	  void insert(T key);      //insert operation
+	  void remove(T key);      //remove operation
+
   private:
 	  int height(AVLTreeNode<T> *tree);  //get the height of tree (for the inside use)
 
@@ -38,8 +45,11 @@ class AVLTree {
 	  AVLTreeNode<T>* rightRightRotation(AVLTreeNode<T>* k2); //corresponding to the situation of RR
 	  AVLTreeNode<T>* rightLeftRotation(AVLTreeNode<T>* k2);  //corresponding to the situation of RL
 
-	  //将节点z插入到AVL树中
-	  AVLTreeNode<T>* insert(AVLTreeNode<T>* &tree, Tkey);  
+	  //插入：将节点z插入到AVL树中
+	  AVLTreeNode<T>* insert(AVLTreeNode<T>* &tree, T key); 
+	  
+	  //删除：删除AVL树中的结点z，并返回被删除的节点
+	  AVLTreeNode<T>* remove(AVLTreeNode<T>* &tree, AVLTreeNode<T>* z);
 
 };
 

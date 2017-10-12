@@ -89,8 +89,39 @@ AVLTreeNode<T>* AVLTree<T>::insert(AVLTreeNode<T>* &tree, T key)
 	}
 	else if (key > tree->key)
 	{
-
+		tree->right = insert(tree->right, key);
+		//插入节点后，若AVL树失去平衡，则进行相应的调节
+		if (height(tree->right) - height(tree->left) == 2)
+		{
+			if (key > tree->right->key)
+				tree = rightRightRotation(tree);
+			else
+				tree = rightLeftRotation(tree);
+		}
 	}
+	else  //key == tree->key
+	{
+		std::cout << "添加失败： 不允许添加相同的节点" << std::endl;
+	}
+	tree->height = max(height(tree->left), height(tree->right)) + 1;
+
+	return tree;
+}
+
+template<typename T>
+void AVLTree<T>::insert(T key)
+{
+	insert(mRoot, key);
+}
+
+template<typename T>
+AVLTreeNode<T>* AVLTree<T>::remove(AVLTreeNode<T>* &tree, AVLTreeNode<T>* z)
+{
+	//根为空 或者 没有要删除的节点，直接返回NULL.
+	if (tree == NULL || z == NULL)
+		return NULL;
+
+
 
 }
 
