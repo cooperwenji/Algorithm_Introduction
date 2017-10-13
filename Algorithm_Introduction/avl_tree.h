@@ -36,6 +36,11 @@ class AVLTree {
 
 	  void insert(T key);      //insert operation
 	  void remove(T key);      //remove operation
+	  AVLTreeNode<T>* search(T key);    //search operation (recursive)
+	  AVLTreeNode<T>* iterativeSearch(T key); //search operation (non-recursive)
+
+	  T maximum();  //return the maximum key T;
+	  T minimum();  //return the minimum key T;
 
   private:
 	  int height(AVLTreeNode<T> *tree);  //get the height of tree (for the inside use)
@@ -50,6 +55,19 @@ class AVLTree {
 	  
 	  //删除：删除AVL树中的结点z，并返回被删除的节点
 	  AVLTreeNode<T>* remove(AVLTreeNode<T>* &tree, AVLTreeNode<T>* z);
+
+	  //查询：查找键值为key的节点（递归实现）
+	  AVLTreeNode<T>* search(AVLTreeNode<T>* tree, T key) const;
+	  //查询：查找键值为key的节点（非递归实现)
+	  AVLTreeNode<T>* iterativeSearch(AVLTreeNode<T>* tree, T key) const;
+
+
+	  //查找最大结点：返回根节点为tree的AVL树中的最大结点
+	  AVLTreeNode<T>* maximum(AVLTreeNode<T>* tree);
+
+	  //查找最小节点：返回根节点为tree的AVL树中的最小节点
+	  AVLTreeNode<T>* minimum(AVLTreeNode<T>* tree);
+
 
 };
 
