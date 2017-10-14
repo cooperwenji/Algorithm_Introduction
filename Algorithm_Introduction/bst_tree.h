@@ -1,5 +1,6 @@
 #ifndef BST_TREE
 #define BST_TREE
+#include<iostream>
 
 template<typename T>
 class BSTNode {
@@ -64,11 +65,168 @@ class BSTree {
 	  void print(BSTNode<T>* tree, T key, int direction);
 };
 
+template<typename T>
+BSTree<T>::BSTree():mRoot(NULL){}
+
+template<typename T>
+BSTree<T>::~BSTree() {
+	destroy(mRoot);
+}
+
+/*
+* 前序遍历
+*/
  template<typename T>
  void BSTree<T>::preOrder(BSTNode<T>* tree) const
  {
 	 if (tree == NULL)
 		 return;
+
+	 std::cout << tree->key << " ";
+	 preOrder(tree->left);
+	 preOrder(tree->right);
+ }
+
+ template<typename T>
+ void BSTree<T>::preOrder()
+ {
+	 preOrder(mRoot);
+ }
+
+ /*
+ * 中序遍历
+ */
+ template<typename T>
+ void BSTree<T>::inOrder(BSTNode<T>* tree) const
+ {
+	 if (tree == NULL)
+		 return;
+
+	 inOrder(tree->left);
+	 std::cout << tree->key << " ";
+	 inOrder(tree->right);
+ }
+
+ template<typename T>
+ void BSTree<T>::inOrder()
+ {
+	 inOrder(mRoot);
+ }
+
+ /*
+ *  后序遍历
+ */
+ template<typename T>
+ void BSTree<T>::postOrder(BSTNode<T>* tree) const
+ {
+	 if (tree == NULL)
+		 return;
+
+	 postOrder(tree->left);
+	 postOrder(tree->right);
+	 std::cout << tree->key << " ";
+ }
+
+ template<typename T>
+ void BSTree<T>::postOrder()
+ {
+	 postOrder(mRoot);
+ }
+
+ //查询操作
+ template<typename T>
+ BSTNode<T>* BSTree<T>::search(BSTNode<T>* x, T key) const
+ {
+	 if (x == NULL || x->key == key)
+		 return x;
+
+	 if (key < x->key)
+		 return search(x->left, key);
+	 else
+		 return search(x->right, key);
+ }
+
+ template<typename T>
+ BSTNode<T>* BSTree<T>::search(T key)
+ {
+	 return search(mRoot, key);
+ }
+
+ template<typename T>
+ BSTNode<T>* BSTree<T>::iterativeSearch(BSTNode<T> *tree, T key) const
+ {
+	 if (tree == NULL)
+		 return tree;
+
+	 while (tree!=NULL)
+	 {
+		 if (key < tree->key)
+			 tree = tree->left;
+		 else if (key > tree->key)
+			 tree = tree->right;
+		 else
+			 return tree;
+	 }
+
+	 return tree;
+ }
+
+ template<typename T>
+ BSTNode<T>* BSTree<T>::iterativeSearch(T key)
+ {
+	 return iterativeSearch(mRoot, key);
+ }
+
+ //最小值
+ template<typename T>
+ BSTNode<T>* BSTree<T>::minimum(BSTNode<T>* tree)
+ {
+	 if (tree == NULL)
+		 return tree;
+
+	 while (tree->left != NULL)
+		 tree = tree->left;
+	 return tree;
+ }
+
+ template<typename T>
+ T BSTree<T>::minimum()
+ {
+	 BSTNode<T>* p = minimum(mRoot);
+	 return p->key;
+ }
+
+ //最大值
+ template<typename T>
+ BSTNode<T>* BSTree<T>::maximum(BSTNode<T>* tree)
+ {
+	 if (tree == NULL)
+		 return tree;
+
+	 while (tree->right != NULL)
+		 tree = tree->right;
+	 return tree;
+ }
+
+ template<typename T>
+ T BSTree<T>::maximum()
+ {
+	 BSTNode<T> *p = maximum(mRoot);
+	 return p->key;
+ }
+
+ //插入
+ template<typename T>
+ void BSTree<T>::insert(BSTNode<T>* &tree, BSTNode<T> *z)
+ {
+	 
+ }
+
+ template<typename T>
+ void BSTree<T>::insert(T key)
+ {
+	 BSTNode<T>* p = new BSTNode<T>(key, NULL, NULL, NULL);
+	 insert(mRoot, p);
  }
 
 #endif // !BST_TREE
