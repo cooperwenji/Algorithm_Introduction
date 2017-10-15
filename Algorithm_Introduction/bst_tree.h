@@ -219,7 +219,57 @@ BSTree<T>::~BSTree() {
  template<typename T>
  void BSTree<T>::insert(BSTNode<T>* &tree, BSTNode<T> *z)
  {
-	 
+	 /*
+	 if (tree == NULL)
+	 {
+		 tree = z;
+		 return;
+	 }
+	 else if (tree->key == z->key)
+	 {
+		 std::cout << "Error: insert the exist key into the tree " << std::endl;
+		 return;
+	 }
+		
+	 BSTNode<T>* p = tree;
+	 while (1)
+	 {
+		 if ((z->key < p->key) && (p->left == NULL))
+		 {
+			 p->left = z;
+			 z->parent = p;
+			 break;
+		 }
+		 else if ((z->key > p->key) && (p->right == NULL))
+		 {
+			 p->right = z;
+			 z->parent = p;
+			 break;
+		 }
+		 else if (z->key < p->key)
+			 p = p->left;
+		 else
+			 p = p->right;
+	 }*/
+	 BSTNode<T>* y = NULL;
+	 BSTNode<T>* x = tree;
+
+	 while (x != NULL)
+	 {
+		 y = x;
+		 if (z->key < y->key)
+			 x = y->left;
+		 else
+			 x = y->right;
+	 }
+
+	 z->parent = y;
+	 if (y == NULL)
+		 tree = z;
+	 else if (z->key < y->key)
+		 y->left = z;
+	 else
+		 y->right = z;
  }
 
  template<typename T>
