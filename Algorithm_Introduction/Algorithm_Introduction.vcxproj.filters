@@ -21,11 +21,14 @@
     <ClInclude Include="Plane_2d.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="bst_tree.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Point.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="avl_tree.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
     <ClCompile Include="main.cpp">
       <Filter>源文件</Filter>
     </ClCompile>

@@ -1,5 +1,6 @@
 #include"avl_tree.h"
 #include"bst_tree.h"
+#include"Point.h"
 
 static int arr[] = { 3, 2, 1, 4, 5, 6, 7, 16, 15, 14, 13, 12,11,10,8,9 };
 
@@ -38,23 +39,30 @@ tree->inOrder();
 
 tree->destroy();*/
 
+//bst_tree test code
+/*int i, ilen;
+BSTree<int>* tree = new BSTree<int>();
+
+ilen = sizeof(arr) / sizeof(arr[0]);
+std::cout << "依次添加： ";
+for (int i = 0; i < ilen; i++)
+{
+	std::cout << arr[i] << "  ";
+	tree->insert(arr[i]);
+}
+
+std::cout << "\n== 中序遍历： ";
+tree->inOrder();*/
 
 
 int main()
 {
-	int i, ilen;
-	BSTree<int>* tree = new BSTree<int>();
-
-	ilen = sizeof(arr) / sizeof(arr[0]);
-	std::cout << "依次添加： ";
-	for (int i = 0; i < ilen; i++)
+	Point_3 a(1, 1, 1), b(2, 2, 2);
+	std::vector<int>* v = a - b;
+	for (int i = 0; i < v->size(); i++)
 	{
-		std::cout << arr[i] << "  ";
-		tree->insert(arr[i]);
+		std::cout << v->at(i) << " ";
 	}
-
-	std::cout << "\n== 中序遍历： ";
-	tree->inOrder();
 
 	system("pause");
 }

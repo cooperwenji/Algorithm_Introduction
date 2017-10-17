@@ -149,6 +149,7 @@
     <ClInclude Include="avl_tree.h" />
     <ClInclude Include="bst_tree.h" />
     <ClInclude Include="Plane_2d.h" />
+    <ClInclude Include="Point.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
