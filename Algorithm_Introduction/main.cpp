@@ -126,9 +126,51 @@ void assemblyLineScheduling()
 
 	print_assembly_line(l, l_final, line_len-1);
 }
-void temo() {}
+
+//æÿ’Û¡¥≥À∑®
+void matrixChainMultiplication(){
+	//data
+	int p[] = { 30, 35, 15, 5, 10, 20, 25 };
+	int matrixLen = sizeof(p) / sizeof(int) - 1;
+	int** m = new int*[matrixLen];
+	int** s = new int*[matrixLen];
+    
+	//init
+	for (int i = 0; i < matrixLen; i++) {
+		m[i] = new int[matrixLen];
+		s[i] = new int[matrixLen];
+	}
+
+	//procedure
+	for (int i = 0; i < matrixLen; i++)
+		m[i][i] = 0;
+	for (int l = 2; l < matrixLen; l++) {
+		for (int i = 0; i < matrixLen - l; i++) {
+			int j = i + l - 1;
+			m[i][j] = 10000000 ;
+			for (int k = i; k < j - 1; k++) {
+				int temp = m[i][k] + m[k + 1][j] + p[i] * p[k + 1] * p[j + 1];
+				if (temp < m[i][j]) {
+					m[i][j] = temp;
+					s[i][j] = k;
+				}
+			}
+		}
+	}
+
+	//print the information
+	for (int i = 0; i < matrixLen; i++) {
+		for (int j = 0; j < matrixLen; j++) {
+			printf("%d ", m[i][j]);
+		}
+		printf("\n");
+	}
+
+	delete[] m;
+	delete[] s;
+}
 int main()
 {
-	assemblyLineScheduling();
+	matrixChainMultiplication();
 	system("pause");
 }
